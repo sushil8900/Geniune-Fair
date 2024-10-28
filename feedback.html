@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="feedback.css" rel="stylesheet">
+
+</head>
+<body>
+    <!--code of nav container from fair.html-->
+    <div class="nav" id="nav">
+        <img class="image" src="autorickshaw.jpg" alt="">
+        <h1>WELOCME TO CAHNDIGARH</h1>
+        <button class="btn" id="btn"><img class="btnimg" src="menu2.png" alt=""></button>
+        <div class="extendednav" id="extendednav">
+            <ul class="list">
+                <li><a href="feedback.html" class="link">Feedback</a></li>
+                <li><a href="#" class="link">Announcments</a></li><!--will make it functional later-->
+                <li><a href="#" class="link">Share</a></li><!--will  do it later-->
+                <li><a href="fair.html" class="link">Fair Doc</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--code for this page strats from here-->
+    <h2>Every feedback is very valuable to us</h2>
+    <form class="feedack">
+
+        <label for="fname">First name</label>
+        <br>
+        <input type="text" id="fname" name="fname" placeholder="first name please" size="50">
+        <br><br>
+        <label for="lname">Last name</label>
+        <br>
+        <input type="text" id="lname" name="lname" placeholder="Last name please" size="50">
+        <br><br>
+        <label for="number">Contact Info</label>
+        <br>
+        <input type="text" id="phone" name="phone" placeholder="Phone number please" size="50">
+        <br><br>
+
+        <label for="Feedback">Feedback</label>
+        <br>
+        <textarea name="no need" id="review" rows="20" cols="100"></textarea>
+        <br><br>
+
+        <!-- Adding a submit button to the form -->
+        <button type="submit" id="submit">Submit Feedback</button>
+    </form>
+<script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1IYL4vGdijTgfA80lc-RGhskQSuDhMi0",
+            authDomain: "feedback-data-a838e.firebaseapp.com",
+            projectId: "feedback-data-a838e",
+            storageBucket: "feedback-data-a838e.appspot.com",
+            messagingSenderId: "890946444132",
+            appId: "1:890946444132:web:90cf62a3054caf71f1b871"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        document.getElementById("submit").addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const feedbackRef = ref(db, 'user/' + document.getElementById("fname").value);
+            
+            set(feedbackRef, {
+                FirstName : document.getElementById("fname").value,
+                LastName : document.getElementById("lname").value,
+                Phone : document.getElementById("phone").value,
+                Feedback: document.getElementById("review").value
+            })
+            .then(() => {
+                alert("Submitted!");
+            })
+            .catch((error) => {
+                alert("Error: " + error.message);
+            });
+        });
+</script>
+<script src="f.js"></script>
+
+</body>
+
+</html>

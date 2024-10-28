@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share</title>
+    <link href="f.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Container -->
+    <div class="nav" id="nav">
+        <img class="image" src="autorickshaw.jpg" alt="Autorickshaw">
+        <h1>WELCOME TO CHANDIGARH</h1>
+        <button class="btn" id="btn"><img class="btnimg" src="menu2.png" alt="Menu"></button>
+        <div class="extendednav" id="extendednav">
+            <ul class="list">
+                <li><a href="feedback.html" class="link">Feedback</a></li>
+                <li><a href="announcement.html" class="link">Announcements</a></li>
+                <li><a href="share.html" class="link">Share</a></li>
+                <li><a href="fair.html" class="link">Fair Doc</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Share Section -->
+    <div class="container">
+        <h2>Share This Page</h2>
+        <div class="share-options">
+            <p>You can share this page on various social media platforms:</p>
+            <button onclick="shareOnFacebook()">Share on Facebook</button>
+            <button onclick="shareOnTwitter()">Share on Twitter</button>
+            <button onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+        </div>
+    </div>
+    
+    <script src="f.js"></script>
+    <script>
+        function shareOnFacebook() {
+            const url = window.location.href;
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        }
+
+        function shareOnTwitter() {
+            const url = window.location.href;
+            const text = 'Check out this awesome website!';
+            window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        function shareOnWhatsApp() {
+            const url = window.location.href;
+            const text = 'Check out this awesome website!';
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}%20${encodeURIComponent(url)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
